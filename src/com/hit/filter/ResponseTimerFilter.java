@@ -56,5 +56,3 @@ public class ResponseTimerFilter implements Filter
 	}
 
 }
-
-// test
