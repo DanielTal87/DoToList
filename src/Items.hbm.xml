@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hit.model.Item" table="Item">
+		<id type="int" name="id" column="Id">
+			<generator class="increment" />
+		</id>
+		<property type="int" name="userId" column="UserId" />
+		<property type="string" name="assignment" column="Assignment" />
+		<property type="string" name="category" column="Category" />
+		<property type="string" name="lastmodify" column="Lastmodify" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hit.model.User" table="User">
+		<id name="id" type="int" column="Id">
+			<generator class="increment" />
+		</id>
+		<property type="string" name="name">
+			<column name="Name" unique="true" />
+		</property>
+		<property type="string" name="password">
+			<column name="Password" />
+		</property>
+		<property type="string" name="email">
+			<column name="Email" />
+		</property>
+	</class>
+</hibernate-mapping>
