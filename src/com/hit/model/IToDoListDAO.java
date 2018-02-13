@@ -5,6 +5,8 @@ import java.util.List;
 import com.hit.exception.ToDoListException;
 
 /**
+ * The project main API
+ * 
  * @author Daniel Tal
  * @author Hadas Barel
  */
@@ -35,7 +37,7 @@ public interface IToDoListDAO
 	public boolean updateUser(User user, String nameToUpdate, String passwordToUpdate, String email) throws ToDoListException;
 
 	/**
-	 * get the list of users from the database
+	 * get list of users from the database
 	 * @return return the list of all users from the database
 	 */
 	public List<User> getUsers() throws ToDoListException;
@@ -94,6 +96,12 @@ public interface IToDoListDAO
 	 */
 	public boolean updateItem(Item item, int userIdToUpdate, String assignmentToUpdate, String categoryToUpdate) throws ToDoListException;
 
+	/**
+	 * delete all items from specific user 
+	 * @param user
+	 *            the user who needs to delete all his items
+	 * @return true if the delete was successful. false otherwise
+	 */
 	public boolean deleteAllItems(User user) throws ToDoListException;
 
 }
