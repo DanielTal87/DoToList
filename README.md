@@ -8,9 +8,10 @@ You can use the [editor on GitHub](https://github.com/DanielTal87/DoToList/edit/
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Writen by:
-
-Daniel Tal - [LinkeIn](https://www.linkedin.com/in/daniel-tal/)
-
+```
+- Daniel Tal - [LinkeIn](https://www.linkedin.com/in/daniel-tal/)
+- Hadas Barel - [LinkeIn](https://www.linkedin.com/in/hadas-barel-a73840148/)
+```
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
