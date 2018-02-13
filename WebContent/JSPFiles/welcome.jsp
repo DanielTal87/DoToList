@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="reset/reset.css"/>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="${pageContext.request.contextPath}/firstStartCSS.css"
 	type="text/css" rel="stylesheet" />
-<script src="${pageContext.request.contextPath}/firstStart.jsp"></script>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -45,7 +45,7 @@
 	</div>
 </body>
 
-<script >
-$('#userH').click();
+<script type="text/javascript">
+	<jsp:include page="/JSFiles/welcome.js" />
 </script>
 </html>
