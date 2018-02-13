@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * User class
  * @author Hadas Barel
  * @author Daniel Tal
  */
@@ -11,10 +12,29 @@ public class User implements Serializable
 {
 
 	private static final long	serialVersionUID	= 1L;
+	/**
+	 * User id
+	 */
 	private int					id;
+
+	/**
+	 * User name
+	 */
 	private String				name;
+
+	/**
+	 * User password
+	 */
 	private String				password;
+
+	/**
+	 * User email
+	 */
 	private String				email;
+
+	/**
+	 * User items list
+	 */
 	private List<Item>			items;
 
 	/**
@@ -23,6 +43,9 @@ public class User implements Serializable
 	public User()
 	{}
 
+	/**
+	 * Constructor
+	 */
 	public User(String name, String password, String email)
 	{
 		setName(name);
@@ -30,9 +53,6 @@ public class User implements Serializable
 		setEmail(email);
 	}
 
-	/**
-	 * temp.. //TO-DO change if needed
-	 */
 	@Override
 	public String toString()
 	{
@@ -41,21 +61,38 @@ public class User implements Serializable
 
 	/* ~~~~~~~~~~~~~~~ Setter & Getters ~~~~~~~~~~~~~~~ */
 
+	/**
+	 * @return id
+	 */
 	public int getId()
 	{
 		return id;
 	}
 
+	/**
+	 * Set the user id
+	 * @param userId
+	 *            the user id to set
+	 */
 	public void setId(int userId)
 	{
 		this.id = userId;
 	}
 
+	/**
+	 * @return name
+	 */
 	public String getName()
 	{
 		return name;
 	}
 
+	/**
+	 * Set the user name
+	 * @param name
+	 *            the name to set
+	 * @return true if the name is valid (not empty or null), false otherwise
+	 */
 	public boolean setName(String name)
 	{
 		if (name == null || name.isEmpty())
@@ -67,11 +104,20 @@ public class User implements Serializable
 		return true;
 	}
 
+	/**
+	 * @return password
+	 */
 	public String getPassword()
 	{
 		return password;
 	}
 
+	/**
+	 * Set the user password
+	 * @param password
+	 *            the password to set
+	 * @return true if the password is valid (not empty or null), false otherwise
+	 */
 	public boolean setPassword(String password)
 	{
 		if (password == null || password.isEmpty())
@@ -83,6 +129,10 @@ public class User implements Serializable
 		return true;
 	}
 
+	/**
+	 * @return items
+	 *         The user items list
+	 */
 	public List<Item> getItems()
 	{
 		return items;
