@@ -1,5 +1,7 @@
 ## ToDoList - Webapp
-## Welcome to GitHub Pages
+
+This application is a project in the course JAVA EE Project at the Holon Institute of Technology (HIT)
+
 
 You can use the [editor on GitHub](https://github.com/DanielTal87/DoToList/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
