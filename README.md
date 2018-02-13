@@ -1,4 +1,4 @@
-## ToDoList - Webapp
+# ToDoList - Webapp
 
 This application is a project in the course JAVA EE Project at the Holon Institute of Technology (HIT)
 
