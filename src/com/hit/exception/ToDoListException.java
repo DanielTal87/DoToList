@@ -1,8 +1,10 @@
 package com.hit.exception;
 
 /**
- * @author Hadas Barel
+ * Exception for the ToDoList project
+ * 
  * @author Daniel Altalat
+ * @author Hadas Barel
  */
 public class ToDoListException extends Exception
 {
