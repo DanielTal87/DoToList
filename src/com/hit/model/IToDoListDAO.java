@@ -6,13 +6,13 @@ import com.hit.exception.ToDoListException;
 
 /**
  * The project main API
- * 
  * @author Daniel Tal
  * @author Hadas Barel
  */
 public interface IToDoListDAO
 {
 	String getEmail(int userId) throws ToDoListException;
+
 	/**
 	 * add new user to the database, user names are unique
 	 * @param user
@@ -49,7 +49,7 @@ public interface IToDoListDAO
 	 * @return the user, null if it was not found
 	 */
 	public User getUser(String userName) throws ToDoListException;
-	
+
 	/**
 	 * given user with its user name and password, find the user in the database by its name and match between
 	 * the passwords
@@ -97,7 +97,7 @@ public interface IToDoListDAO
 	public boolean updateItem(Item item, int userIdToUpdate, String assignmentToUpdate, String categoryToUpdate) throws ToDoListException;
 
 	/**
-	 * delete all items from specific user 
+	 * delete all items from specific user
 	 * @param user
 	 *            the user who needs to delete all his items
 	 * @return true if the delete was successful. false otherwise
