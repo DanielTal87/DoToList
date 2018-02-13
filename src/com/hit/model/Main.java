@@ -7,21 +7,24 @@ import com.hit.exception.ToDoListException;
 public class Main
 {
 
+	/**
+	 * !!! FOR DEVOLPOERS TESTS ONLY !!!
+	 */
 	public static void main(String[] args)
 	{
 
 		HibernateToDoListDAO htdl = HibernateToDoListDAO.getHibernateToDoListDAOInstance();
 		htdl.emptyUserTable();
 		htdl.emptyItemTable();
-		
+
 		User user = new User();
 
 		try
 		{
-			User user3 = new User("daniel", "1234","da");
+			User user3 = new User("daniel", "1234", "da");
 			htdl.addUser(user3);
-			htdl.addUser(new User("ddd", "124","ddd"));
-			htdl.addUser(new User("hsd", "q34","hah"));
+			htdl.addUser(new User("ddd", "124", "ddd"));
+			htdl.addUser(new User("hsd", "q34", "hah"));
 			System.out.println(user3.getId());
 			List<User> list = htdl.getUsers();
 			for (User usr : list)
@@ -48,17 +51,16 @@ public class Main
 
 			// htdl.deleteItem(item1);
 			htdl.deleteAllItems(user3);
-			User user5 = new User("aaaba", "111111","aba");
+			User user5 = new User("aaaba", "111111", "aba");
 
 			htdl.addUser(user5);
 			htdl.addItem(item2);
 			htdl.addItem(new Item(user3.getId(), "home sweet home", " very importent!"));
-			htdl.addUser(user5); // Spouse to throw an error!!!
+			htdl.addUser(user5); // supposed to throw an error!!!
 
 		} catch (ToDoListException e)
 		{
 			e.printStackTrace();
 		}
 	}
-
 }
