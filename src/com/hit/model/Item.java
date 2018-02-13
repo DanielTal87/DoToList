@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
  * Item class
  * 
  * @author Hadas Barel
- * @author Daniel Altalat
+ * @author Daniel Tal
  */
 public class Item implements Serializable {
 	private static final long serialVersionUID = 1L;
