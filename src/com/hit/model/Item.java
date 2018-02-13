@@ -5,16 +5,39 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
+ * Item class
+ * 
  * @author Hadas Barel
- * @author Daniel Tal
+ * @author Daniel Altalat
  */
 public class Item implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Item id
+	 */
 	private int id;
+	
+	/**
+	 * User id
+	 */
 	private int userId;
+	
+	/**
+	 * Assignment
+	 */
 	private String assignment;
+	
+	/**
+	 * Category
+	 */
 	private String category;
-	private String lastmodify = "";
+	
+	/**
+	 * @param Lastmodify
+	 * When assignment enters into database, automatically will enters a date for this assignment.
+	 */
+	private String lastmodify;
 
 	/**
 	 * default Constructor
@@ -22,16 +45,15 @@ public class Item implements Serializable {
 	public Item() {
 	}
 
+	/**
+	 * Constructor
+	 */
 	public Item(int userId, String assignment, String category) {
 		setUserId(userId);
 		setAssignment(assignment);
 		setCategory(category);
-	//	setLastmodify("aaa");
 	}
 
-	/**
-	 * temp.. //TO-DO change if needed
-	 */
 	@Override
 	public String toString() {
 		return "Item: [itemId=" + id + " userID=" + getUserId() + "]";
@@ -46,6 +68,10 @@ public class Item implements Serializable {
 		return id;
 	}
 
+	/**
+	 * Set the item id
+	 * @param item id
+	 */
 	public void setId(int itemId) {
 		this.id = itemId;
 	}
@@ -109,9 +135,6 @@ public class Item implements Serializable {
 	 * @see LocalDate.now()
 	 */
 	public void setLastmodify(String value) {
-		/*DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate localDate = LocalDate.now();
-		this.lastmodify = dtf.format(localDate);*/
 		this.lastmodify=value;
 	}
 }
