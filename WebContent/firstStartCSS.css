@@ -1,20 +1,30 @@
-.Icon{
-	float: right;
-	position: absolute;
-	color: #424242 !important;
-	margin-left: 450px;
+/* ~~~~~~~~~~~~~~~ global CSS ~~~~~~~~~~~~~~~ */
+.button {
+	background-color: white;
+	width: 80%;
+	color: black;
+	padding: 12px 20px 10px;
+	margin: 0px 0 10px;
+	border: 2px solid #4CAF50;
+	border-radius: 4px;
+	cursor: pointer;
+	float: none;
 }
+
+.button:hover {
+	background-color: #4CAF50;
+	color: white;
+}
+
+.center {
+	text-align: center;
+}
+
 html {
 	position: absolute;
 	height: 500px;
 	width: 600px;
 	padding-left: 80px;
-}
-.up{
-	display: inline-block;
-}
-.center {
-	text-align: center;
 }
 
 h1, i.h1Icon {
@@ -24,35 +34,8 @@ h1, i.h1Icon {
 	text-shadow: 1px 1px gray;
 }
 
-.hidden{
-    display:none;
-}
-
 i {
 	color: gray;
-}
-
-.formgroup {
-	color: black;
-}
-
-.button{
-	background-color: white;
-	width: 80%;
-	color: black;
-	padding: 12px 20px 10px;
-	margin: 0px 0 10px;
-	border: 2px solid #4CAF50;
-	border-radius: 4px;
-	cursor: pointer;
-	float:none;
-}
-td{
-	align:center;
-}
-.button:hover{
-	background-color: #4CAF50;
-	color: white;
 }
 
 .title {
@@ -61,42 +44,32 @@ td{
 	text-transform: capitalize;
 	text-shadow: 0px 0px gray;
 }
-.fa-power-off{
-	margin-left: 740px;
+
+/* ~~~~~~~~~~~~~~~ Tabs CSS ~~~~~~~~~~~~~~~ */
+
+/** control of tabs li size */
+.nav>li>a {
+	color: #45a049;
 }
 
-.fa-commenting-o{
-	padding: 4px;
-	margin-bottom: 0px;
-	float: left;
-	color: #4CAF50;	
+.nav-tabs {
+	padding-right: 440px;
 }
 
-#dailySubmit{
-	width: 20%;
-	background-color: #4CAF50;
-	color: white;
-	padding: 12px 20px 10px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
+.nav-tabs>li>a {
+	background-color: windowframe;
 }
 
-#dailyInput{
-	width: 50%;
-	padding: 12px 34px 10px;
-	margin: 5px 0px;
-	display: inline-block;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
+.nav-tabs>li>a:hover {
+	border-top: 1px solid #45a049 !important;
 }
 
-.fa-power-off:hover{
-	color:#E52600;
+/**control of moving box*/
+.tab-content {
+	color: #45a049 !important;
 }
-/*************************************Sign up css*********************************/
+
+/* ~~~~~~~~~~~~~~~ Sign up CSS ~~~~~~~~~~~~~~~ */
 
 /**control of border box size*/
 .borderTabSign {
@@ -118,7 +91,7 @@ td{
 	margin-top: 15px;
 }
 
-/*************************************Log in css*********************************/
+/* ~~~~~~~~~~~~~~~ Log in CSS ~~~~~~~~~~~~~~~ */
 
 /** control of border box size */
 .borderTabLogin {
@@ -140,7 +113,7 @@ td{
 	margin-top: 15px;
 }
 
-/*************************************Sign up and Log in css*********************************/
+/* ~~~~~~~~~~~~~~~ Sign up and Log in CSS ~~~~~~~~~~~~~~~ */
 input[type=text], input[type=password], input[type=email] {
 	width: 90%;
 	padding: 12px 34px 10px;
@@ -169,30 +142,91 @@ input[type=submit]:hover {
 .moveRightInp {
 	padding-right: 35px;
 }
-/*************************************Tabs css*********************************/
 
-/** control of tabs li size */
-.nav>li>a {
-	color: #45a049;
+/* ~~~~~~~~~~~~~~~ welcome page CSS ~~~~~~~~~~~~~~~ */
+.hidden {
+	display: none;
 }
 
-.nav-tabs {
-	padding-right: 440px;
+/* ~~~~~~~~~~~~~~~ items page CSS ~~~~~~~~~~~~~~~ */
+.assSize {
+	width: 45%;
 }
 
-.nav-tabs>li>a {
-	background-color: windowframe;
+.catSize {
+	width: 38%;
 }
 
-.nav-tabs>li>a:hover {
-	border-top: 1px solid #45a049 !important;
+#dailyInput {
+	width: 62%;
+	padding: 10px 15px 10px;
+	margin: 5px 0px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	color: gray;
 }
 
-/**control of moving box*/
-.tab-content {
-	color: #45a049 !important;
+#dailySubmit {
+	width: 22%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 15px 10px;
+	margin: 5px 0px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
 }
 
+.down {
+	padding-bottom: 12px;
+	margin-top: 30px;
+}
+
+.fa-commenting-o {
+	padding: 4px;
+	margin-bottom: 0px;
+	float: left;
+	color: #4CAF50;
+}
+
+.fa-power-off {
+	margin-left: 740px;
+}
+
+.fa-power-off:hover {
+	color: #E52600;
+}
+
+.idSize {
+	width: 4%;
+}
+
+.inLine {
+	display: inline-block;
+}
+
+.lasmSize {
+	width: 13%;
+}
+
+.tabButSize {
+	width: 150%;
+}
+
+.tabSize {
+	width: 80%;
+}
+
+td {
+	align: center;
+}
+
+.tdButSize {
+	width: 33%;
+}
+
+/* ~~~~~~~~~~~~~~~ error page CSS ~~~~~~~~~~~~~~~ */
 #ErrorBtn {
 	display: none;
 }
