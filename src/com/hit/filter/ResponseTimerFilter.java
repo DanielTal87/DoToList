@@ -12,10 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Filter for response time
  * Servlet Filter implementation class ResponseTimerFilter
- * 
-* @author Daniel Tal
-* @author Hadas Barel
-*/
+ * @author Daniel Tal
+ * @author Hadas Barel
+ */
 public class ResponseTimerFilter implements Filter
 {
 	protected FilterConfig config;
@@ -50,7 +49,6 @@ public class ResponseTimerFilter implements Filter
 	}
 
 	/**
-	 * 
 	 * @param fConfig
 	 * @see Filter#init(FilterConfig)
 	 */
@@ -58,5 +56,4 @@ public class ResponseTimerFilter implements Filter
 	{
 		this.config = fConfig;
 	}
-
 }
