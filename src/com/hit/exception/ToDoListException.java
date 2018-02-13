@@ -2,7 +2,6 @@ package com.hit.exception;
 
 /**
  * Exception for the ToDoList project
- * 
  * @author Daniel Altalat
  * @author Hadas Barel
  */
