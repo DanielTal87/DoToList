@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 /**
  * ... login
  * 
- * @author Daniel Altalat
+ * @author Daniel Tal
  * @author Hadas Barel
  */
 @WebServlet("/Controller/*")
