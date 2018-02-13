@@ -9,7 +9,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Writen by:
 
-- List Daniel Tal - [LinkeIn](https://www.linkedin.com/in/daniel-tal/)
+- Daniel Tal - [LinkeIn](https://www.linkedin.com/in/daniel-tal/)
 - Hadas Barel - [LinkeIn](https://www.linkedin.com/in/hadas-barel-a73840148/)
 
 
