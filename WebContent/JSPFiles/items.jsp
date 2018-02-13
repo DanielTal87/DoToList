@@ -4,24 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="reset/reset.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="${pageContext.request.contextPath}/firstStartCSS.css"
 	type="text/css" rel="stylesheet" />
-<script src="${pageContext.request.contextPath}/firstStart.jsp"></script>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
 	<!-- items list -->
 	<div class="container">
-	<!--<h3>Hello <!%=session.getAttribute("username")%></h3>  -->
 		<h2>your To-Do list</h2>
-		<table class="table table-striped table-hover" style="width: 80%">
+		<table class="table table-striped table-hover tabSize">
 			<thead>
 				<tr>
 					<th>#</th>
@@ -39,20 +37,20 @@
 				%>
 				<tr>
 
-					<td style="width: 4%"><input type="checkbox" id="<%=i%>"
+					<td class="idSize"><input type="checkbox" id="<%=i%>"
 						class="checkIds" value="<%=items.get(i).getAssignment()%>"
 						name="<%=items.get(i).getCategory()%>" /></td>
-					<td style="width: 45%">
+					<td class="assSize">
 						<%
 							out.print(items.get(i).getAssignment());
 						%>
 					</td>
-					<td style="width: 40%">
+					<td class="catSize">
 						<%
 							out.print(items.get(i).getCategory());
 						%>
 					</td>
-					<td style="width: 11%">
+					<td class="lasmSize">
 						<%
 							out.print(items.get(i).getLastmodify());
 						%>
@@ -60,77 +58,89 @@
 				</tr>
 				<%
 					}
-				}
+					}
 				%>
 			</tbody>
 		</table>
 	</div>
 
 	<!----------------------------------buttons-------------------------------->
-	<table style="width:150%" align="center">
-	<tr>
-			<td style="width: 33%">
+	<table class="tabButSize" align="center">
+		<tr>
+			<td class="tdButSize">
 				<!-- updateItem button -->
-				<button class="button" id="UpdateItem" type="button" data-toggle="modal">Update Item</button>
+				<button class="button" id="UpdateItem" type="button"
+					data-toggle="modal">Update Item</button>
 			</td>
-			
-			<td style="width: 33%">
+
+			<td class="tdButSize">
 				<!-- addItem button -->
-				<button class="button" id="AddItem" type="button" data-toggle="modal" data-target="#AddIteModel">Add item</button>
+				<button class="button" id="AddItem" type="button"
+					data-toggle="modal" data-target="#AddIteModel">Add item</button>
 			</td>
-			
-			<td style="width: 33%">
+
+			<td class="tdButSize">
 				<!-- updateUser button -->
-				<button  class="button" type="button" data-toggle="modal" data-target="#UpdateUserModel">Update User</button>
+				<button class="button" type="button" data-toggle="modal"
+					data-target="#UpdateUserModel">Update User</button>
 			</td>
 		</tr>
 		<tr>
-			<td style="width: 33%">
+			<td class="tdButSize">
 				<!-- deleteItem button -->
 				<form method="get" id="delForm"
 					action="${pageContext.request.contextPath}/Controller/DeleteItem">
 					<input type="hidden" name="idAssignmentDelete" id="deleteId"
-						value="" />
-					<button class="button" id="DeleteItem" type="button">Delete Item</button>
+						value="" required pattern="\w+" />
+					<button class="button" id="DeleteItem" type="button">Delete
+						Item</button>
 				</form>
 			</td>
-			
-			<td style="width: 33%">
+
+			<td class="tdButSize">
 				<!-- deleteAllItem button -->
 				<form method="get"
 					action="${pageContext.request.contextPath}/Controller/DeleteAllItem">
-					<button class="button" id="DeleteAllItem" type="submit">Delete All Item</button>
+					<button class="button" id="DeleteAllItem" type="submit">Delete
+						All Item</button>
 				</form>
 			</td>
-			
-			<td style="width: 33%">
-			 <!-- deleteUser button -->
+
+			<td class="tdButSize">
+				<!-- deleteUser button -->
 				<form method="get"
 					action="${pageContext.request.contextPath}/Controller/DeleteUser">
 					<button class="button" type="submit">Delete User</button>
 				</form>
-				
+
 			</td>
 		</tr>
 	</table>
-	
-    <!-- dailyTip button -->
-	<form method="get" id="dailyTipForm" class="up" action="${pageContext.request.contextPath}/Controller/Tip">
-	<a href="#hiddenType" id="DailyTip"><i title="Daily Tip" class="fa fa-commenting-o fa-2x " aria-hidden="true"></i></a>
+
+	<!-- dailyTip button -->
+	<form method="get" id="dailyTipForm" class="inLine"
+		action="${pageContext.request.contextPath}/Controller/Tip">
+		<a href="#hiddenType" id="DailyTip"><i title="Daily Tip"
+			class="fa fa-commenting-o fa-2x " aria-hidden="true"></i></a>
 		<!--<a type="button" id="tipButton">
 	      <span  class="fa fa-commenting-o fa-2x"></span> Daily Tip
 	    </a>  -->
-	    <div id="hiddenType">
-  	<input id="dailyInput" type="text" placeholder="please enter the day.." name="day" > 
- 	<button id="dailySubmit" type="submit">Done</button></div>
+		<div id="hiddenType" class="down">
+			<input class="inLine" id="dailyInput" type="text"
+				placeholder="please enter the day.." name="day" required
+				pattern="\w+">
+			<button class="inLine" id="dailySubmit" type="submit">Done</button>
+		</div>
 	</form>
-	
+
 	<!-- logOut button -->
-	<form method="get" id="logOutForm" class="up" action="${pageContext.request.contextPath}/Controller/LogOut">
+	<form method="get" id="logOutForm" class="inLine"
+		action="${pageContext.request.contextPath}/Controller/LogOut">
 		<!--<button class="button" type="submit">Log Out</button>  -->
-			<a id="logOut"><i title="Log Out" class="fa fa-power-off fa-2x" aria-hidden="true"></i></a>
+		<a id="logOut"><i title="Log Out" class="fa fa-power-off fa-2x"
+			aria-hidden="true"></i></a>
 	</form>
-	
+
 	<!----------------------------------popUps-------------------------------->
 
 	<!-- updateItem popUp -->
@@ -148,17 +158,18 @@
 					<div class="modal-body">
 						<div class="formgroup">
 							assignment: <input type="text" id="assingmentToUpdate" value=""
-								name="assingmentToUpdate" /><br />
+								name="assingmentToUpdate" required pattern="\w+" /><br />
 						</div>
 						<div class="formgroup">
 							category: <input type="text" value="" name="categoryToUpdate"
-								id="categoryToUpdate" /><br />
+								id="categoryToUpdate" required pattern="\w+" /><br />
 						</div>
 					</div>
 					<div class="modal-footer">
 						<div class="formgroup">
 							<input type="hidden" name="idAssignmentUpdate" id="updateId"
-								value="" /> <input type="submit" value="Done" name="submit" />
+								value="" required pattern="\w+" /> <input type="submit"
+								value="Done" name="submit" />
 
 							<!--<button type="button" class="btn btn-default" data-dismiss="modal"  onclick="close();">Done</button>  -->
 						</div>
@@ -184,11 +195,12 @@
 					<div class="modal-body">
 						<div class="formgroup">
 							assignment: <input type="text" value=""
-								placeholder="assingment.." name="assingment" /><br />
+								placeholder="assingment.." name="assingment" required
+								pattern="\w+" /><br />
 						</div>
 						<div class="formgroup">
 							category: <input type="text" value="" placeholder="category.."
-								name="category" /><br />
+								name="category" required pattern="\w+" /><br />
 						</div>
 						<p id="test"></p>
 					</div>
@@ -221,17 +233,18 @@
 						<div class="formgroup">
 							userName: <input type="text"
 								value=<%=session.getAttribute("username").toString()%>
-								name="newUserName" /><br />
+								name="newUserName" required pattern="\w+" /><br />
 						</div>
 						<div class="formgroup">
 							password: <input type="text"
 								value=<%=session.getAttribute("password").toString()%>
-								name="password" /><br />
+								name="password" required pattern="\w+" /><br />
 						</div>
 
 						<div class="formgroup">
-							email:<br /> <input type="text"
-								value=<%=session.getAttribute("email").toString()%> name="email" /><br />
+							email:<br /> <input type="email"
+								value=<%=session.getAttribute("email").toString()%> name="email"
+								required pattern="\w+" /><br />
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -244,62 +257,18 @@
 
 		</div>
 	</div>
-
-
-
 </body>
-<script>
 
-$('#dailyInput').hide();	
-$('#dailySubmit').hide();
-
-		$('#DailyTip').on('click',function(){
-			$('#dailyInput').show();	
-			$('#dailySubmit').show();	
-		});
-		
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		};
-		
-		$('#UpdateItem').on('click',function(){
-			var id=$('#deleteId').val();
-			$('#assingmentToUpdate').val($('#'+id).val());
-			$('#categoryToUpdate').val($('#'+id).attr('name'));
-			$(this).attr( 'data-target','#UpdateIteModel');
-		});
-		
-		$('#DeleteItem').on('click',function(){
-			$('#delForm').submit();
-		});
-		
-		 $(document).on('click','.checkIds',function(){
-			if($(this).prop('checked')){
-				$('#deleteId').val($(this).attr('id'));
-				$('#updateId').val($(this).attr('id'));
-			}else{
-				$('#deleteId').val("");
-				$('#updateId').val("");
-			}
-		});
-		 
-		 $('input[type="checkbox"]').on('change', function() {
-			   $('input[type="checkbox"]').not(this).prop('checked', false);
-		});
-		 
-		 $('#logOut').on('click',function(){
-			 $('#logOutForm').submit();
-		 });
-		 
+<script type="text/javascript">
+<jsp:include page="/JSFiles/items.js" />
 		window.onload = function() {
 			<%String btnClick = (String) session.getAttribute("ButtonToClick").toString();
 			if (!btnClick.equals("null")) {%>
-				var butnClick = document.getElementById('<%=btnClick%>');
+				var butnClick = document.getElementById('<%=btnClick%>
+	');
 		butnClick.click();
 <%}%>
 	};
 </script>
+
 </html>
