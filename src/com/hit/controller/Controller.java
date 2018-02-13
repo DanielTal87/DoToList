@@ -68,7 +68,7 @@ public class Controller extends HttpServlet
 				break;
 
 			/**
-			 * Sing-up a new user to the application data-base
+			 * Sign-up a new user to the application data-base
 			 */
 			case "SignUp":
 
@@ -127,8 +127,7 @@ public class Controller extends HttpServlet
 				{
 					userIdForCheck = htdl.login(userName, password);
 					if (userIdForCheck)
-					{
-						// user is already in data base
+					{ 	// user is already in data base
 						user = htdl.getUser(userName);
 						session.setAttribute("userId", user.getId());
 						Cookie cookie = new Cookie("username", userName);
@@ -144,17 +143,14 @@ public class Controller extends HttpServlet
 						rd = request.getServletContext().getRequestDispatcher("/JSPFiles/welcome.jsp");
 						rd.forward(request, response);
 					} else
-					{
-						// user is not found, turn to error page
+					{ 	// user is not found, turn to error page
 						session.setAttribute("Error", "Your user name is not found");
 						session.setAttribute("WhereToGoError", "FirstStart");
 						rd = request.getServletContext().getRequestDispatcher("/JSPFiles/error.jsp");
 						rd.forward(request, response);
 					}
 				} catch (ToDoListException e)
-				{
-					// an exception occurred
-					// turn to error page
+				{ 	// an exception occurred turn to error page
 					session.setAttribute("Error", "an error has happend in LogIn");
 					session.setAttribute("WhereToGoError", "FirstStart");
 					rd = request.getServletContext().getRequestDispatcher("/JSPFiles/error.jsp");
@@ -166,25 +162,31 @@ public class Controller extends HttpServlet
 			 * Add item to the list
 			 */
 			case "AddItem":
-
 				userId = (int)session.getAttribute("userId");
 				// get parameters from jsp files
 				assingment = (String)request.getParameter("assingment");
 				category = (String)request.getParameter("category");
 				try
 				{
-					// all the commands here will be executed if the addItem() method succeeded
-					Item temp = new Item(userId, assingment, category);
-					htdl.addItem(temp);
-					user = htdl.getUser((String)session.getAttribute("username"));
-					session.setAttribute("items", htdl.getItems(user));
-					session.setAttribute("ButtonToClick", "null");// with out popUp in items page
-					rd = request.getServletContext().getRequestDispatcher("/JSPFiles/items.jsp");
-					rd.forward(request, response);
+					if (htdl.getItem(assingment, userId) != null)
+					{ // the assignment already in db
+						session.setAttribute("Error", "assignment is already in db");
+						session.setAttribute("WhereToGoError", "Items");
+						session.setAttribute("ButtonToClick", "AddItem"); // with popUp in items page
+						rd = request.getServletContext().getRequestDispatcher("/JSPFiles/error.jsp");
+						rd.forward(request, response);
+					} else
+					{ // all the commands here will be executed if the addItem() method succeeded
+						Item temp = new Item(userId, assingment, category);
+						htdl.addItem(temp);
+						user = htdl.getUser((String)session.getAttribute("username"));
+						session.setAttribute("items", htdl.getItems(user));
+						session.setAttribute("ButtonToClick", "null");// with out popUp in items page
+						rd = request.getServletContext().getRequestDispatcher("/JSPFiles/items.jsp");
+						rd.forward(request, response);
+					}
 				} catch (ToDoListException e)
-				{
-					// an exception occurred
-					// turn to error page
+				{ // an exception occurred turn to error page
 					session.setAttribute("Error", "an error has happend in AddItem");
 					session.setAttribute("WhereToGoError", "Items");
 					session.setAttribute("ButtonToClick", "AddItem");// with popUp in items page
@@ -205,20 +207,32 @@ public class Controller extends HttpServlet
 				Item itemToUpdate = null;
 				try
 				{
-					// if updateItem() method succeeded
-					user = htdl.getUser((String)session.getAttribute("username"));
-					oldAssingment = htdl.getItems(user).get(Integer.valueOf(idAssignment)).getAssignment();
-					itemToUpdate = htdl.getItem(oldAssingment, userId);
-					htdl.updateItem(itemToUpdate, userId, assingment, category);
-					user = htdl.getUser((String)session.getAttribute("username"));
-					session.setAttribute("items", htdl.getItems(user));
-					session.setAttribute("ButtonToClick", "null");// with out popUp in items page
-					session.removeAttribute("oldAssingment");
-					rd = request.getServletContext().getRequestDispatcher("/JSPFiles/items.jsp");
-					rd.forward(request, response);
+					if (htdl.getItem(assingment, userId) != null)
+					{ // assignment already in db
+						session.setAttribute("Error", "assignment is already in db");
+						session.setAttribute("WhereToGoError", "Items");
+						session.setAttribute("ButtonToClick", "UpdateItem");// with
+						// popUp
+						// in
+						// items
+						// page
+						rd = request.getServletContext().getRequestDispatcher("/JSPFiles/error.jsp");
+						rd.forward(request, response);
+					} else
+					{ // if updateItem() method succeeded
+						user = htdl.getUser((String)session.getAttribute("username"));
+						oldAssingment = htdl.getItems(user).get(Integer.valueOf(idAssignment)).getAssignment();
+						itemToUpdate = htdl.getItem(oldAssingment, userId);
+						htdl.updateItem(itemToUpdate, userId, assingment, category);
+						user = htdl.getUser((String)session.getAttribute("username"));
+						session.setAttribute("items", htdl.getItems(user));
+						session.setAttribute("ButtonToClick", "null");// with out popUp in items page
+						session.removeAttribute("oldAssingment");
+						rd = request.getServletContext().getRequestDispatcher("/JSPFiles/items.jsp");
+						rd.forward(request, response);
+					}
 				} catch (ToDoListException e)
-				{
-					// an exception occurred, turn to error page
+				{ // an exception occurred, turn to error page
 					session.setAttribute("Error", "an error has happend in UpdateItem");
 					session.removeAttribute("oldAssingment");
 					session.setAttribute("WhereToGoError", "Items"); // with pop-up in items page
@@ -255,9 +269,7 @@ public class Controller extends HttpServlet
 						rd = request.getServletContext().getRequestDispatcher("/JSPFiles/items.jsp");
 						rd.forward(request, response);
 					} catch (ToDoListException e)
-					{
-						// an exception occurred
-						// turn to error page
+					{ // an exception occurred turn to error page
 						session.setAttribute("Error", "an error has happend in DeleteItem");
 						session.setAttribute("WhereToGoError", "Items");// with popUp in items page
 						rd = request.getServletContext().getRequestDispatcher("/JSPFiles/error.jsp");
@@ -273,8 +285,7 @@ public class Controller extends HttpServlet
 				try
 				{
 					user = htdl.getUser((String)session.getAttribute("username"));
-					// all the commands here will be executed if the deleteAllItem() method
-					// succeeded
+					// all the commands here will be executed if the deleteAllItem() method succeeded
 					htdl.deleteAllItems(user);
 					session.setAttribute("items", htdl.getItems(user));
 					session.setAttribute("ButtonToClick", "null");// with out popUp in items page
@@ -304,9 +315,7 @@ public class Controller extends HttpServlet
 					rd = request.getServletContext().getRequestDispatcher("/JSPFiles/firstStart.jsp");
 					rd.forward(request, response);
 				} catch (ToDoListException e)
-				{
-					// an exception occurred
-					// turn to error page
+				{ // an exception occurred turn to error page
 					session.setAttribute("Error", "an error has happend in DeleteUser");
 					session.setAttribute("WhereToGoError", "Items");// with popUp in items page
 					rd = request.getServletContext().getRequestDispatcher("/JSPFiles/error.jsp");
@@ -325,14 +334,28 @@ public class Controller extends HttpServlet
 				email = (String)request.getParameter("email");
 				try
 				{
-					// all the commands here will be executed if the updateUser() method succeeded
-					user = htdl.getUser((String)session.getAttribute("username"));// oldUserName
-					htdl.updateUser(user, newUserName, password, email);
-					session.setAttribute("username", newUserName);
-					session.setAttribute("password", password);
-					session.setAttribute("email", email);
-					rd = request.getServletContext().getRequestDispatcher("/JSPFiles/items.jsp");
-					rd.forward(request, response);
+					if (htdl.getUser(newUserName) != null)
+					{ // user name is already in db
+						session.setAttribute("Error", "change your user name");
+						session.setAttribute("WhereToGoError", "Items");
+						session.setAttribute("ButtonToClick", "UpdateUser");// with
+						// popUp
+						// in
+						// items
+						// page
+						rd = request.getServletContext().getRequestDispatcher("/JSPFiles/error.jsp");
+						rd.forward(request, response);
+					} else
+					{
+						// all the commands here will be executed if the updateUser() method succeeded
+						user = htdl.getUser((String)session.getAttribute("username"));// oldUserName
+						htdl.updateUser(user, newUserName, password, email);
+						session.setAttribute("username", newUserName);
+						session.setAttribute("password", password);
+						session.setAttribute("email", email);
+						rd = request.getServletContext().getRequestDispatcher("/JSPFiles/items.jsp");
+						rd.forward(request, response);
+					}
 				} catch (ToDoListException e)
 				{
 					// an exception occurred
@@ -457,7 +480,7 @@ public class Controller extends HttpServlet
 											action = "FirstStart";
 										} else
 										{
-											if (request.getRequestURI().endsWith("items"))
+											if (request.getRequestURI().endsWith("Items"))
 											{
 												action = "Items";
 											} else
@@ -519,4 +542,5 @@ public class Controller extends HttpServlet
 				}
 			}
 	}
+
 }
