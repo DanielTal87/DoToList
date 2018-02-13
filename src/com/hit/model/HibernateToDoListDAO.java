@@ -11,7 +11,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import com.hit.exception.ToDoListException;
 
 /**
- * @author Daniel Altalat
+ * @author Daniel Tal
  * @author Hadas Barel
  */
 public class HibernateToDoListDAO implements IToDoListDAO
