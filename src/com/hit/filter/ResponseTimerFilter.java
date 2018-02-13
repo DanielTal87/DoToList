@@ -10,14 +10,18 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * Filter for response time
  * Servlet Filter implementation class ResponseTimerFilter
- */
+ * 
+* @author Daniel Tal
+* @author Hadas Barel
+*/
 public class ResponseTimerFilter implements Filter
 {
 	protected FilterConfig config;
 
 	/**
-	 * Default constructor.
+	 * Default constructor
 	 */
 	public ResponseTimerFilter()
 	{}
