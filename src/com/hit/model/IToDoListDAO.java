@@ -5,7 +5,7 @@ import java.util.List;
 import com.hit.exception.ToDoListException;
 
 /**
- * @author Daniel Altalat
+ * @author Daniel Tal
  * @author Hadas Barel
  */
 public interface IToDoListDAO
