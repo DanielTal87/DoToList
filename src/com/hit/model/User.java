@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @author Hadas Barel
- * @author Daniel Altalat
+ * @author Daniel Tal
  */
 public class User implements Serializable
 {
