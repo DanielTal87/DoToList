@@ -16,22 +16,25 @@ import com.hit.exception.ToDoListException;
  * @author Daniel Tal
  * @author Hadas Barel
  */
-public class HibernateToDoListDAO implements IToDoListDAO {
+public class HibernateToDoListDAO implements IToDoListDAO
+{
 	/**
 	 * Session Factory, use to get connection from data base
 	 */
-	private SessionFactory factory;
+	private SessionFactory				factory;
 
 	/**
 	 * first instance, initialized to null
 	 */
-	public static HibernateToDoListDAO HibernateToDoListDAOInstance = null;
+	public static HibernateToDoListDAO	HibernateToDoListDAOInstance	= null;
 
 	/**
 	 * Static method, to get the current instance of this class
 	 */
-	public static HibernateToDoListDAO getHibernateToDoListDAOInstance() {
-		if (HibernateToDoListDAOInstance == null) {
+	public static HibernateToDoListDAO getHibernateToDoListDAOInstance()
+	{
+		if (HibernateToDoListDAOInstance == null)
+		{
 			HibernateToDoListDAOInstance = new HibernateToDoListDAO();
 		}
 		return HibernateToDoListDAOInstance;
@@ -40,38 +43,49 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 	/**
 	 * Private constructor
 	 */
-	private HibernateToDoListDAO() {
+	private HibernateToDoListDAO()
+	{
 		factory = new AnnotationConfiguration().configure().buildSessionFactory();
 	}
 
 	@Override
-	public void addUser(User user) throws ToDoListException {
-		if (user != null) {
+	public void addUser(User user) throws ToDoListException
+	{
+		if (user != null)
+		{
 			Session session = factory.openSession();
-			try {
+			try
+			{
 				session.beginTransaction();
 				// add user to data base
 				session.save(user);
 				System.out.println(user);
 				session.getTransaction().commit();
-			} catch (HibernateException e) {
-				if (session.getTransaction() != null) {
+			} catch (HibernateException e)
+			{
+				if (session.getTransaction() != null)
+				{
 					session.getTransaction().rollback();
 				}
 				throw new ToDoListException("ERROR! Unable to add the user", e);
-			} finally {
+			} finally
+			{
 				session.close();
 			}
-		} else {
+		} else
+		{
 			throw new ToDoListException("ERROR! user value is null");
 		}
 	}
 
 	@Override
-	public boolean deleteUser(User user) throws ToDoListException {
-		if (user != null) {
+	public boolean deleteUser(User user) throws ToDoListException
+	{
+		if (user != null)
+		{
 			Session session = factory.openSession();
-			try {
+			try
+			{
 				session.beginTransaction();
 				// delete user from DB && delete all his items
 				session.delete(user);
@@ -80,179 +94,228 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 				session.getTransaction().commit();
 
 				return true;
-			} catch (HibernateException e) {
-				if (session.getTransaction() != null) {
+			} catch (HibernateException e)
+			{
+				if (session.getTransaction() != null)
+				{
 					session.getTransaction().rollback();
 				}
 				throw new ToDoListException("ERROR! Unable to delete the user", e);
 
-			} finally {
+			} finally
+			{
 				session.close();
 			}
-		} else {
+		} else
+		{
 			throw new ToDoListException("ERROR! user value is null");
 		}
 	}
 
 	@Override
-	public boolean updateUser(User user, String nameToUpdate, String passwordToUpdate, String email)
-			throws ToDoListException {
-		if (user != null) {
+	public boolean updateUser(User user, String nameToUpdate, String passwordToUpdate, String email) throws ToDoListException
+	{
+		if (user != null)
+		{
 			Session session = factory.openSession();
-			try {
+			try
+			{
 				session.beginTransaction();
 				// update all user fields
 				user.setName(nameToUpdate);
 				user.setPassword(passwordToUpdate);
 				user.setEmail(email);
-				//update
+				// update
 				session.update(user);
 				session.getTransaction().commit();
 				return true;
-			} catch (HibernateException e) {
-				if (session.getTransaction() != null) {
+			} catch (HibernateException e)
+			{
+				if (session.getTransaction() != null)
+				{
 					session.getTransaction().rollback();
 				}
 				throw new ToDoListException("ERROR! Unable to update the user", e);
-			} finally {
+			} finally
+			{
 				session.close();
 			}
-		} else {
+		} else
+		{
 			throw new ToDoListException("ERROR! user value is null");
 		}
 	}
 
 	@Override
-	public List<User> getUsers() throws ToDoListException {
+	public List<User> getUsers() throws ToDoListException
+	{
 		List<User> list = null;
 		Session session = factory.openSession();
-		try {
+		try
+		{
 			session.beginTransaction();
 			// get list of users
 			list = session.createQuery("from User").list();
 			session.getTransaction().commit();
-			if (list != null && list.isEmpty()) {
+			if (list != null && list.isEmpty())
+			{
 				return null;
-			} else {
+			} else
+			{
 				return list;
 			}
-		} catch (HibernateException e) {
+		} catch (HibernateException e)
+		{
 			throw new ToDoListException("ERROR! Unable to get the users list from database", e);
 
-		} finally {
+		} finally
+		{
 			session.close();
 		}
 	}
 
 	@Override
-	public User getUser(String userName) throws ToDoListException {
-		if (!userName.isEmpty() && userName != null) {
+	public User getUser(String userName) throws ToDoListException
+	{
+		if (!userName.isEmpty() && userName != null)
+		{
 			Session session = factory.openSession();
-			try {
+			try
+			{
 				List<User> list = null;
 				User user = null;
 				session.beginTransaction();
 				// get list of users by its user name
 				list = session.createQuery("from User where name= '" + userName + "'").list();
-				if (list != null && list.isEmpty()) {
-					return null;
-				} else if (list.size() > 1) // Verifies that the user name is
-											// unique
+				if (list != null && list.isEmpty())
 				{
-					throw new ToDoListException("ERROR! Returned more than one user");
-				} else {
-					// return the only item in the list
-					user = list.get(0);
-				}
+					return null;
+				} else
+					if (list.size() > 1) // Verifies that the user name is
+					                     // unique
+					{
+						throw new ToDoListException("ERROR! Returned more than one user");
+					} else
+					{
+						// return the only item in the list
+						user = list.get(0);
+					}
 				session.getTransaction().commit();
 				return user;
-			} catch (HibernateException e) {
+			} catch (HibernateException e)
+			{
 				throw new ToDoListException("ERROR! Unable to get the user from the database", e);
-			} finally {
+			} finally
+			{
 				session.close();
 			}
-		} else {
+		} else
+		{
 			throw new ToDoListException("ERROR! Unable to get the user");
 		}
 	}
 
 	@Override
-	public boolean login(String nameToCheck, String passwordToCheck) throws ToDoListException {
-		try {
+	public boolean login(String nameToCheck, String passwordToCheck) throws ToDoListException
+	{
+		try
+		{
 			User user = getUser(nameToCheck);
 			// checks if user is in DB
-			if (user != null && user.getPassword().equals(passwordToCheck)) {
+			if (user != null && user.getPassword().equals(passwordToCheck))
+			{
 				return true;
 			}
-		} catch (HibernateException e) {
+		} catch (HibernateException e)
+		{
 			throw new ToDoListException("ERROR! the username or the password is incorrect", e);
 		}
 		return false;
 	}
 
 	@Override
-	public Item getItem(String assignment, int userId) throws ToDoListException {
-		if (!assignment.isEmpty() && assignment != null) {
+	public Item getItem(String assignment, int userId) throws ToDoListException
+	{
+		if (!assignment.isEmpty() && assignment != null)
+		{
 			Session session = factory.openSession();
-			try {
+			try
+			{
 				List<Item> list = null;
 				Item item = null;
 				session.beginTransaction();
 				// get list of item by assignment and user id
 				list = session.createQuery("from Item where Assignment= '" + assignment + "'" + " and UserId= '" + userId + "'").list();
-				if (list != null && list.isEmpty()) {
-					return null;
-				} else if (list.size() > 1) // Verifies that the user name is
-											// unique
+				if (list != null && list.isEmpty())
 				{
-					throw new ToDoListException("ERROR! Returned more than one item");
-				} else {
-					// return the only item in the list
-					item = list.get(0);
-				}
+					return null;
+				} else
+					if (list.size() > 1) // Verifies that the user name is
+					                     // unique
+					{
+						throw new ToDoListException("ERROR! Returned more than one item");
+					} else
+					{
+						// return the only item in the list
+						item = list.get(0);
+					}
 				session.getTransaction().commit();
 				return item;
-			} catch (HibernateException e) {
+			} catch (HibernateException e)
+			{
 				throw new ToDoListException("ERROR! Unable to get the item from the database", e);
-			} finally {
+			} finally
+			{
 				session.close();
 			}
-		} else {
+		} else
+		{
 			throw new ToDoListException("ERROR! Unable to get the item from the database");
 		}
 	}
 
 	@Override
-	public List<Item> getItems(User user) throws ToDoListException {
-		if (user != null) {
+	public List<Item> getItems(User user) throws ToDoListException
+	{
+		if (user != null)
+		{
 			List<Item> list = null;
 			Session session = factory.openSession();
-			try {
+			try
+			{
 				session.beginTransaction();
 				// get list of items by user id
 				list = session.createQuery("from Item where userId= '" + user.getId() + "'").list();
 				session.getTransaction().commit();
-				if (list != null && list.isEmpty()) {
+				if (list != null && list.isEmpty())
+				{
 					return new ArrayList<Item>();
-				} else {
+				} else
+				{
 					return list;
 				}
-			} catch (HibernateException e) {
+			} catch (HibernateException e)
+			{
 				throw new ToDoListException("ERROR! Unable to get the items list from database", e);
 
-			} finally {
+			} finally
+			{
 				session.close();
 			}
-		} else {
+		} else
+		{
 			throw new ToDoListException("ERROR! Unable to get the items list from database, user value is null");
 		}
 	}
 
 	@Override
-	public void addItem(Item item) throws ToDoListException {
-		if (item != null) {
+	public void addItem(Item item) throws ToDoListException
+	{
+		if (item != null)
+		{
 			Session session = factory.openSession();
-			try {
+			try
+			{
 				session.beginTransaction();
 				// when user add item, the date of the current day will also enter
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -262,78 +325,100 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 				session.save(item);
 				System.out.println(item);
 				session.getTransaction().commit();
-			} catch (HibernateException e) {
-				try {
-					if (session.getTransaction() != null) {
+			} catch (HibernateException e)
+			{
+				try
+				{
+					if (session.getTransaction() != null)
+					{
 						session.getTransaction().rollback();
 					}
-				} catch (HibernateException e1) {
+				} catch (HibernateException e1)
+				{
 					throw new ToDoListException("ERROR! Unable to add the item", e1);
 				}
 				throw new ToDoListException("ERROR! Unable to add the item", e);
-			} finally {
+			} finally
+			{
 				session.close();
 			}
-		} else {
+		} else
+		{
 			throw new ToDoListException("ERROR! Unable to add the item, the value is null");
 		}
 	}
 
 	@Override
-	public boolean deleteItem(Item item) throws ToDoListException {
-		if (item != null) {
+	public boolean deleteItem(Item item) throws ToDoListException
+	{
+		if (item != null)
+		{
 			Session session = factory.openSession();
-			try {
+			try
+			{
 				session.beginTransaction();
 				// delete specific item
 				session.delete(item);
 				session.getTransaction().commit();
 				return true;
-			} catch (HibernateException e) {
-				if (session.getTransaction() != null) {
+			} catch (HibernateException e)
+			{
+				if (session.getTransaction() != null)
+				{
 					session.getTransaction().rollback();
 				}
 				throw new ToDoListException("ERROR! Unable to delete the item", e);
-			} finally {
+			} finally
+			{
 				session.close();
 			}
-		} else {
+		} else
+		{
 			throw new ToDoListException("ERROR! Unable to delete the item, the value is null");
 		}
 	}
 
 	@Override
-	public boolean deleteAllItems(User user) throws ToDoListException {
-		if (user != null) {
+	public boolean deleteAllItems(User user) throws ToDoListException
+	{
+		if (user != null)
+		{
 			List<Item> list = null;
 			Session session = factory.openSession();
-			try {
+			try
+			{
 				session.beginTransaction();
 				// get list of user items
 				list = getItems(user);
 				// delete all items
-				for (Item item : list) {
+				for (Item item : list)
+				{
 					session.delete(item);
 				}
 				session.getTransaction().commit();
 				return true;
-			} catch (HibernateException e) {
+			} catch (HibernateException e)
+			{
 				throw new ToDoListException("ERROR! Unable to delete all the user items", e);
 
-			} finally {
+			} finally
+			{
 				session.close();
 			}
-		} else {
+		} else
+		{
 			throw new ToDoListException("ERROR! Unable to delete all the user items,user value is null");
 		}
 	}
 
 	@Override
-	public boolean updateItem(Item item, int userIdToUpdate, String assignmentToUpdate, String categoryToUpdate)
-			throws ToDoListException {
-		if (item != null) {
+	public boolean updateItem(Item item, int userIdToUpdate, String assignmentToUpdate, String categoryToUpdate) throws ToDoListException
+	{
+		if (item != null)
+		{
 			Session session = factory.openSession();
-			try {
+			try
+			{
 				session.beginTransaction();
 				// update all item fields
 				item.setUserId(userIdToUpdate);
@@ -347,45 +432,57 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 				session.update(item);
 				session.getTransaction().commit();
 				return true;
-			} catch (HibernateException e) {
-				if (session.getTransaction() != null) {
+			} catch (HibernateException e)
+			{
+				if (session.getTransaction() != null)
+				{
 					session.getTransaction().rollback();
 				}
 				throw new ToDoListException("ERROR! Unable to update the item", e);
-			} finally {
+			} finally
+			{
 				session.close();
 			}
-		}else{
+		} else
+		{
 			throw new ToDoListException("ERROR! Unable to update the item, item value is null");
 		}
 	}
 
 	@Override
-	public String getEmail(int userId) throws ToDoListException {
+	public String getEmail(int userId) throws ToDoListException
+	{
 		Session session = factory.openSession();
 		List<User> user = null;
 		String email = null;
-		try {
+		try
+		{
 			session.beginTransaction();
 			// get list of email's by user id
 			user = session.createQuery("from User where Id= " + userId + "").list();
-			if (user != null && user.isEmpty()) {
-				return null;
-			} else if (user.size() > 1) // Verifies that the user name is unique
+			if (user != null && user.isEmpty())
 			{
-				throw new ToDoListException("ERROR! Returned more than one email");
-			} else {
-				// return the only email in the list
-				email = user.get(0).getEmail();
-			}
+				return null;
+			} else
+				if (user.size() > 1) // Verifies that the user name is unique
+				{
+					throw new ToDoListException("ERROR! Returned more than one email");
+				} else
+				{
+					// return the only email in the list
+					email = user.get(0).getEmail();
+				}
 			session.getTransaction().commit();
 			return email;
-		} catch (HibernateException e) {
-			if (session.getTransaction() != null) {
+		} catch (HibernateException e)
+		{
+			if (session.getTransaction() != null)
+			{
 				session.getTransaction().rollback();
 			}
 			throw new ToDoListException("ERROR! Unable to get email", e);
-		} finally {
+		} finally
+		{
 			session.close();
 		}
 	}
@@ -398,7 +495,8 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 	 * <p>
 	 * Does not drop the table, only clearing the content
 	 */
-	public void emptyItemTable() {
+	public void emptyItemTable()
+	{
 		Session session = factory.openSession();
 		session.createSQLQuery("truncate table User").executeUpdate();
 	}
@@ -406,9 +504,10 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 	/**
 	 * Empty the user table Does not drop the table, only clearing the content
 	 */
-	public void emptyUserTable() {
+	public void emptyUserTable()
+	{
 		Session session = factory.openSession();
 		session.createSQLQuery("truncate table Item").executeUpdate();
 	}
-
+	
 }
