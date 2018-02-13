@@ -1,16 +1,18 @@
 # ToDoList - Webapp
 
-This application is a project in the course JAVA EE Project at the Holon Institute of Technology (HIT)
-
-
-You can use the [editor on GitHub](https://github.com/DanielTal87/DoToList/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This application is a project in the course JAVA EE 2018 at the Holon Institute of Technology (HIT)
 
 ### Writen by:
 
 - Daniel Tal - [LinkeIn](https://www.linkedin.com/in/daniel-tal/)
 - Hadas Barel - [LinkeIn](https://www.linkedin.com/in/hadas-barel-a73840148/)
+
+
+--------------------------------------------------------------
+
+You can use the [editor on GitHub](https://github.com/DanielTal87/DoToList/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+
+Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 
 
