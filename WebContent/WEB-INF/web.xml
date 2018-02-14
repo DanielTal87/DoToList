@@ -25,4 +25,8 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<listener>
+		<listener-class>com.hit.listener.AdminListener</listener-class>
+	</listener>
+
 </web-app>
