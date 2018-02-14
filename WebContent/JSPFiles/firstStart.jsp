@@ -135,13 +135,16 @@
 					<div class="modal-body">
 
 						<div class="formgroup">
-							userName: <input type="text" value="" name="userNameAdmin"
-								required pattern="\w+" /><br />
+							User name: <input type="text" value="" name="userNameAdmin"
+								required pattern="\w+" placeholder="User name.." /><br />
 						</div>
+						
 						<div class="formgroup">
-							password: <input type="password" value="" name="passwordAdmin"
-								required pattern="\w+" /><br />
+							Password: <input type="password" value="" name="passwordAdmin"
+								required pattern="\w+" placeholder="Password.." /><br />
 						</div>
+
+					</div>
 
 					</div>
 					<div class="modal-footer">
@@ -152,7 +155,6 @@
 					</div>
 				</form>
 			</div>
-
 		</div>
 	</div>
 </body>
