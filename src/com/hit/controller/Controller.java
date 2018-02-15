@@ -377,6 +377,7 @@ public class Controller extends HttpServlet
 				session.removeAttribute("username");
 				session.removeAttribute("userId");
 				session.removeAttribute("items");
+				session.invalidate(); // invalidating the session
 				eraseCookie(request, response);
 				rd = request.getServletContext().getRequestDispatcher("/JSPFiles/firstStart.jsp");
 				rd.forward(request, response);
