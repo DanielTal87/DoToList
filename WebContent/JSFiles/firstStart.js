@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	// polyfill for RegExp.escape
+	// poly-fill for RegExp.escape
 	if (!RegExp.escape) {
 		RegExp.escape = function(s) {
 			return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
