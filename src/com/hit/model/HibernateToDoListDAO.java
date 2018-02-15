@@ -59,7 +59,6 @@ public class HibernateToDoListDAO implements IToDoListDAO
 				session.beginTransaction();
 				// add user to data base
 				session.save(user);
-				System.out.println(user);
 				session.getTransaction().commit();
 			} catch (HibernateException e)
 			{
@@ -90,9 +89,7 @@ public class HibernateToDoListDAO implements IToDoListDAO
 				// delete user from DB && delete all his items
 				session.delete(user);
 				deleteAllItems(user);
-
 				session.getTransaction().commit();
-
 				return true;
 			} catch (HibernateException e)
 			{
@@ -323,7 +320,6 @@ public class HibernateToDoListDAO implements IToDoListDAO
 				item.setLastmodify(dtf.format(localDate));
 				// add item
 				session.save(item);
-				System.out.println(item);
 				session.getTransaction().commit();
 			} catch (HibernateException e)
 			{
@@ -488,7 +484,6 @@ public class HibernateToDoListDAO implements IToDoListDAO
 	}
 
 	/* ~~~~~~~~~~~~~~~ Only for Tests ~~~~~~~~~~~~~~~ */
-	/*  */
 
 	/**
 	 * Empty the item table
@@ -509,5 +504,5 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		Session session = factory.openSession();
 		session.createSQLQuery("truncate table Item").executeUpdate();
 	}
-	
+
 }
