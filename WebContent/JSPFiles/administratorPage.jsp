@@ -28,7 +28,8 @@
 		</thead>
 		<tbody>
 			<%
-				List<HttpSession> sessions = (List<HttpSession>)session.getAttribute("sessionList");
+				ServletContext ctx = getServletContext();
+				List<HttpSession> sessions = (ArrayList<HttpSession>)ctx.getAttribute("sessions");
 				if (sessions != null)
 				{
 					for (int i = 0; i < sessions.size(); i++)
@@ -37,8 +38,8 @@
 			<tr>
 				<td>
 					<%
-						if (((HttpSession)sessions.get(i)).getAttribute("username") != null)
-									out.print(((HttpSession)sessions.get(i)).getAttribute("username").toString());
+						if (sessions.get(i).getAttribute("username") != null)
+									out.print(sessions.get(i).getAttribute("username").toString());
 					%>
 				</td>
 			</tr>
