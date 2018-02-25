@@ -2,7 +2,7 @@
 
 The application is a project in JAVA EE course at Holon Institute of Technology (HIT)
 
-## description
+## Description
 The Web Application allows:
 - the private end user can manage his personal todo list 
 - new users to register/login and logout
