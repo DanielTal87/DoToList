@@ -15,7 +15,7 @@ The web application implement the MVC architecture
 - **Frond-End** - Bootstrap
 - JSP tag , java bean, filters
 
-### Writen by:
+## Writen by:
 
 - Daniel Tal - [LinkeIn](https://www.linkedin.com/in/daniel-tal/)
 - Hadas Barel - [LinkeIn](https://www.linkedin.com/in/hadas-barel-a73840148/)
