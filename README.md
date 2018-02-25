@@ -12,8 +12,8 @@ The web application implement the MVC architecture
 
 ### Technologies
 - **Server-Side** - Apache and MAMP
-- **Frond-End** - Bootstrap
-- JSP tag , java bean, filters
+- **Frond-End** - Bootstrap, JS, Jquery, Html, CSS
+- JSP Tag , Java-Bean, Filters
 
 ## Authors
 
