@@ -3,10 +3,12 @@
 The application is a project in JAVA EE course at Holon Institute of Technology (HIT)
 
 ## 
-Web application that allows the private end user to manage his personal todo list 
-The web application should allow new users to register/login and logout. 
-In addition, it should allow its users to add//delete/update todo list items as well as to get a complete list of all todo list items. 
-The web application should implement the MVC architecture (as explained in class)
+The Web Application allows:
+> the private end user to manage his personal todo list 
+> new users to register/login and logout
+> the users to add//delete/update todo list items as well as to get a complete list of all todo list items 
+
+The web application implement the MVC architecture
 
 ### Writen by:
 
