@@ -11,11 +11,11 @@ The Web Application allows:
 The web application implement the MVC architecture
 
 #### Technologies
-- **Server-side** - Apache and MAMP
-- **Frond-end** - Bootstrap
+- **Server-Side** - Apache and MAMP
+- **Frond-End** - Bootstrap
 - JSP tag , java bean, filters
 
 ### Writen by:
 
 - **Daniel Tal** - [LinkeIn](https://www.linkedin.com/in/daniel-tal/)
-- Hadas Barel - [LinkeIn](https://www.linkedin.com/in/hadas-barel-a73840148/)
+- **Hadas Barel** - [LinkeIn](https://www.linkedin.com/in/hadas-barel-a73840148/)
