@@ -17,5 +17,5 @@ The web application implement the MVC architecture
 
 ### Writen by:
 
-- **Daniel Tal** - [LinkeIn](https://www.linkedin.com/in/daniel-tal/)
-- **Hadas Barel** - [LinkeIn](https://www.linkedin.com/in/hadas-barel-a73840148/)
+- Daniel Tal - [LinkeIn](https://www.linkedin.com/in/daniel-tal/)
+- Hadas Barel - [LinkeIn](https://www.linkedin.com/in/hadas-barel-a73840148/)
